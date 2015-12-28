@@ -2,8 +2,22 @@ var React = require('react');
 var _ = require('underscore');
 
 var StateList = React.createClass({
+  getInitialState: function() {
+    return {
+      data: this.props.data
+    }
+  },
+  filter: function(event) {
+    var filtered = _.chain(this.props.data)
+                    .filter(function(f){
+                      return f.state.toLowerCase().indexOf(
+                        event.target.value.toLowerCase()
+                      )>-1;
+                    });
+    this.setState({data: filtered});
+  },
   render: function() {
-    var stateNodes = _.chain(this.props.data)
+    var stateNodes = _.chain(this.state.data)
                       .groupBy('state')
                       .map(function(value, key) {
                           return {
@@ -16,7 +30,7 @@ var StateList = React.createClass({
                       })
                       .map(function(m) {
                           return (
-                            <p key={m.state}>
+                            <p id={m.state} key={m.state}>
                               <a href={"/#/"+m.state.replace(' ','')}><span>{m.state}</span></a>
                               <span> {m.data[0].totals}</span>
                             </p>
@@ -25,6 +39,7 @@ var StateList = React.createClass({
                       .value();
     return (
       <div className="stateList">
+        <input id="stateFilter" onChange={this.filter}/>
         {stateNodes}
       </div>
     );
