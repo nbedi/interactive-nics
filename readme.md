@@ -4,5 +4,5 @@ parsed data from [BuzzFeedNews](https://github.com/BuzzFeedNews/nics-firearm-bac
 
 ```
 browserify script:
-browserify -t [ babelify --presets [ react ] ] src/main.js -o dist/bundle.js
+browserify -t [ babelify --presets [ react ] ] src/main.jsx -o dist/bundle.js
 ```

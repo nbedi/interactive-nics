@@ -1,9 +1,13 @@
 var React = require('react');
 var _ = require('underscore');
 
-var StateList = React.createClass({
+var State = React.createClass({
   render: function() {
-    var stateNodes = _.chain(this.props.data)
+    var name = this.props.name;
+    var state = _.chain(this.props.data)
+                      .filter(function(f) {
+                        return f.state == name;
+                      })
                       .groupBy('state')
                       .map(function(value, key) {
                           return {
@@ -17,18 +21,17 @@ var StateList = React.createClass({
                       .map(function(m) {
                           return (
                             <p key={m.state}>
-                              <span>{m.state} </span>
-                              <span>{m.data[0].totals}</span>
+                              {JSON.stringify(m)}
                             </p>
                           );
                       })
                       .value();
     return (
-      <div className="stateList">
-        {stateNodes}
+      <div className="state">
+        {state}
       </div>
     );
   }
 });
 
-module.exports = StateList;
+module.exports = State;
