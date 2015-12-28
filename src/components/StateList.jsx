@@ -17,8 +17,8 @@ var StateList = React.createClass({
                       .map(function(m) {
                           return (
                             <p key={m.state}>
-                              <span>{m.state} </span>
-                              <span>{m.data[0].totals}</span>
+                              <a href={"/#/"+m.state.replace(' ','')}><span>{m.state}</span></a>
+                              <span> {m.data[0].totals}</span>
                             </p>
                           );
                       })

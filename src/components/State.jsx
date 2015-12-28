@@ -6,7 +6,7 @@ var State = React.createClass({
     var name = this.props.name;
     var state = _.chain(this.props.data)
                       .filter(function(f) {
-                        return f.state == name;
+                        return f.state.replace(' ', '') == name;
                       })
                       .groupBy('state')
                       .map(function(value, key) {
