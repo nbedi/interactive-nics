@@ -13,13 +13,13 @@ var StateList = React.createClass({
     }
   },
   filter: function(event) {
-    var filtered = group(_.chain(this.props.data)
+    var filtered = _.chain(group(this.props.data))
                     .filter(function(f){
                       return f.state.toLowerCase().indexOf(
                         event.target.value.toLowerCase()
                       )>-1;
                     })
-                    .value());
+                    .value();
     this.setState({data: filtered});
   },
   sort: function(event) {
