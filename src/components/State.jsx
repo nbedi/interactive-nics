@@ -3,31 +3,22 @@ var _ = require('underscore');
 
 var State = React.createClass({
   render: function() {
-    var name = this.props.name;
     var state = _.chain(this.props.data)
-                      .filter(function(f) {
-                        return f.state.replace(' ', '') == name;
-                      })
-                      .groupBy('state')
-                      .map(function(value, key) {
-                          return {
-                              state: key,
-                              data: _.sortBy(value, 'month').reverse()
-                          }
-                      })
-                      .sort(function(a, b){
-                        return parseInt(b.data[0].totals) - parseInt(a.data[0].totals);
-                      })
+                      .sortBy('month')
+                      .reverse()
                       .map(function(m) {
                           return (
-                            <p key={m.state}>
-                              {JSON.stringify(m)}
+                            <p id={m.month} key={m.month}>
+                              <span>{m.month}</span>
+                              <span> {m.totals}</span>
                             </p>
                           );
                       })
                       .value();
     return (
       <div className="state">
+        <a href="/#/">Back</a>
+        <h1>{this.props.data[0].state}</h1>
         {state}
       </div>
     );
