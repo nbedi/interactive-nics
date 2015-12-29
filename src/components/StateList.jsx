@@ -73,9 +73,7 @@ var StateList = React.createClass({
               <th id="totals" className="asc sorted" onClick={this.sort}>Totals</th>
             </tr>
           </thead>
-          <tbody>
-            {stateNodes}
-          </tbody>
+          <tbody>{stateNodes}</tbody>
         </table>
       </div>
     );
