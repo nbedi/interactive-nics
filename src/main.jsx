@@ -19,6 +19,7 @@ var history = createHashHistory({
 
 var Summary = React.createClass({  
   render: function() {
+    document.body.scrollTop = document.documentElement.scrollTop = 0;
     return (
       <div className="summary">
         <h1>FBI NICS Firearm Background Check Data</h1>
@@ -30,6 +31,7 @@ var Summary = React.createClass({
 
 var Detail = React.createClass({  
   render: function() {
+    document.body.scrollTop = document.documentElement.scrollTop = 0;
     var name = this.props.params.name;
     var filtered = _.chain(data)
                       .filter(function(f) {

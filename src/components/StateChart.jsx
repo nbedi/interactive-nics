@@ -7,7 +7,7 @@ var StateChart = React.createClass({
     renderChart(this.props.data);
   },
   render: function() {
-    return (<div id="chart"></div>)
+    return (<div id="chart" className="large"></div>)
   }
 })
 
