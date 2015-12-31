@@ -20,23 +20,8 @@ var history = createHashHistory({
 var Summary = React.createClass({  
   render: function() {
     return (
-      <div className="app">
+      <div className="summary">
         <h1>FBI NICS Firearm Background Check Data</h1>
-          <p>
-            <span>Data from the </span>
-            <a href="https://www.fbi.gov/about-us/cjis/nics">
-              FBI's National Instant Criminal Background Check System
-            </a>
-            <span> and parsed by </span> 
-            <a href="https://github.com/BuzzFeedNews/nics-firearm-background-checks#fbi-nics-firearm-background-check-data">
-              Buzzfeed News
-            </a>
-          </p>
-          <p>
-            <a href="https://github.com/BuzzFeedNews/nics-firearm-background-checks#notes-on-the-data">
-              More about the data from Buzzfeed
-            </a>
-          </p>
         <StateList data={data} />
       </div>
     );
@@ -52,7 +37,7 @@ var Detail = React.createClass({
                       })
                       .value();
     return (
-      <div className="app">
+      <div className="detail">
         <State data={filtered} />
       </div>
     );
