@@ -59,7 +59,7 @@ var StateList = React.createClass({
     var rows = _.map(this.state.data, function(m) {
                           return (
                             <tr id={m.state} key={m.state}>
-                              <td id="state" className="small"><a href={"/#/"+m.state.replace(' ','')}>{m.state}</a></td>
+                              <td id="state" className="small"><a href={"#/"+m.state.replace(' ','')}>{m.state}</a></td>
                               <td id="permit" className="medium">{m.permit.toLocaleString()}</td>
                               <td id="handgun" className="medium">{m[switchValue+'handgun']?m[switchValue+'handgun'].toLocaleString():0}</td>
                               <td id="long_gun" className="medium">{m[switchValue+'long_gun']?m[switchValue+'long_gun'].toLocaleString():0}</td>

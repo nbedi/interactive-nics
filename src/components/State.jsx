@@ -13,18 +13,18 @@ var State = React.createClass({
     Array.prototype.slice
           .call(document.getElementsByTagName('th'))
           .forEach(function(th) {
-            th.className = th.className.split(' ')[0];
+            th.className = th.className.split(' ')[0] + ' ' + th.className.split(' ')[1];
             th.setAttribute('sorted', 'false');
           });
     var sorted = _.chain(this.state.data)
                     .sortBy(event.target.id)
                     .value();
     event.target.setAttribute('sorted', 'true')
-    if (event.target.className == "asc") {
-      event.target.className = "desc";
+    if (event.target.className.indexOf("asc")>-1) {
+      event.target.className = "desc " + event.target.className.split(' ')[1];
     } else {
       sorted.reverse();
-      event.target.className = "asc";
+      event.target.className = "asc " + event.target.className.split(' ')[1];;
     }
     this.setState({data: sorted});
   },
@@ -51,7 +51,7 @@ var State = React.createClass({
                       });
     return (
       <div className="state">
-        <a href="/#/">Back</a>
+        <a href="#/">Back</a>
         <h1>{this.state.data[0].state}</h1>
         <StateChart data={this.state.data} />
         <p className="switchLabel medium">Category for handgun, long gun and other:</p>
@@ -67,7 +67,7 @@ var State = React.createClass({
         <table>
           <thead>
             <tr id="headers">
-              <th id="month" className="asc sorted small" onClick={this.sort}>Month</th>
+              <th id="month" className="asc small sorted" onClick={this.sort}>Month</th>
               <th id="permit" className="desc small" onClick={this.sort}>Permits</th>
               <th id="handgun" className="desc medium" onClick={this.sort}>Handgun</th>
               <th id="long_gun" className="desc medium" onClick={this.sort}>Long guns</th>
