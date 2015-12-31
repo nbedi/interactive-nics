@@ -38,14 +38,14 @@ var State = React.createClass({
     var state = _.map(this.state.data, function(m) {
                           return (
                             <tr id={m.month} key={m.month}>
-                              <td id="month" className="small">{m.month}</td>
-                              <td id="permit" className="small">{m.permit.toLocaleString()}</td>
+                              <td id="month" className="small">{m.month?m.month.toLocaleString():0}</td>
+                              <td id="permit" className="small">{m.permit?m.permit.toLocaleString():0}</td>
                               <td id="handgun" className="medium">{m[switchValue+'handgun']?m[switchValue+'handgun'].toLocaleString():0}</td>
                               <td id="long_gun" className="medium">{m[switchValue+'long_gun']?m[switchValue+'long_gun'].toLocaleString():0}</td>
                               <td id="other" className="medium">{m[switchValue+'other']?m[switchValue+'other'].toLocaleString():0}</td>
-                              <td id="multiple" className="large">{m.multiple.toLocaleString()}</td>
-                              <td id="admin" className="large">{m.admin.toLocaleString()}</td>
-                              <td id="totals" className="small">{m.totals.toLocaleString()}</td>
+                              <td id="multiple" className="large">{m.multiple?m.multiple.toLocaleString():0}</td>
+                              <td id="admin" className="large">{m.admin?m.admin.toLocaleString():0}</td>
+                              <td id="totals" className="small">{m.totals?m.totals.toLocaleString():0}</td>
                             </tr>
                           );
                       });
